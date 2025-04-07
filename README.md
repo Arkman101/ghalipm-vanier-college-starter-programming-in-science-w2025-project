@@ -12,7 +12,7 @@ For this project, you are provided with the `mathematics.csv` file containing a 
    - Create a scatter plot to visualize the relationship between `x` and `y`, where `y = x^2`.
    - Ensure that the axes are labeled and the plot has an appropriate title.
 
-2. **Logarithmic Regression**: **(20%)**  
+2. **Logarithmic Regression**: **(20%)**  (Use logarithm_noisy.csv for the question)
    - Use a logarithmic regression model to fit the noisy logarithmic data.
    - Plot the best-fit logarithmic curve on the scatter plot.
    - Ensure proper axis labeling and titling.
@@ -22,7 +22,7 @@ For this project, you are provided with the `mathematics.csv` file containing a 
    - Plot the best-fit square root curve.
    - Ensure the plot clearly shows both the data points and the regression line.
 
-4. **Surface Plot **: **(20%)**  
+4. **Surface Plot** : **(20%)**  
    - Create a **3D plot** for the function `z=exp(-0.01*x**2-0.01*y**2)` for `x` and `y` both in (-20, 20) with step length h=0.05 . 
 
 5. **Animation**: **(20%)**  
