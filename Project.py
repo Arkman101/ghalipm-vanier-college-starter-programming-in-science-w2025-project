@@ -4,6 +4,9 @@ from scatter_plot import create_scatter_plot
 from square_root_regression import fit_square_root_regression
 from logarithmic_regression import fit_logarithmic_regression
 from surface_plot import create_surface_plot
+from animated_plot import create_animated_plot
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 import numpy as np
 import os
 
@@ -33,7 +36,16 @@ def fit_square_root_regression(data_file='data.txt'):
 def create_surface_plot():
      # Do your coding here
     pass
-    
+
+
+# Q5: Create an animated plot for the given function y = 4*cos(2*x) over x in (-4, 4) with step length h=0.01.
+def create_animated_plot():
+    """    
+    Returns:
+        ani: Matplotlib FuncAnimation object.
+    """
+    pass
+
 
 if __name__ == '__main__':
     unittest.main()
