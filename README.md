@@ -4,7 +4,7 @@ This template repository is the starter project for the Programming in Science P
 
 ## Project: Data Visualization
 
-For this project, you are provided with the `mathematics.csv` file containing a dataset that includes values of `x` and their corresponding `y` values based on the equation `y = x^2`. Additionally, a `logarithm_noisy.csv` dataset has been provided, which contains logarithmic values with added white noise. Your task is to analyze this data and create various visualizations following these instructions:
+For this project, you are provided with the `mathematics.csv` file containing a dataset that includes values of `x` and their corresponding `y` values based on the equation `y = x^2`. Additionally, a `noisy_data.txt` dataset has been provided, which contains logarithmic values with added white noise. Your task is to analyze this data and create various visualizations following these instructions:
 
 ### Instructions:
 
