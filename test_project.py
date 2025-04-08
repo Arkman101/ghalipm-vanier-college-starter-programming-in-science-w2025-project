@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scatter_plot import create_scatter_plot
 from logarithmic_regression import fit_logarithmic_regression
+from surface_plot import create_surface_plot
 import os
 
 # Q1: Create a scatter plot of y = x^2 using data from a CSV file 
@@ -139,6 +140,35 @@ def test_fit_square_root_regression():
     plt.close(fig)
     os.remove('test_data.txt')
 
+# Q4: Create a 3D plot for the given function
+
+# Test case for create_surface_plot() function
+def test_create_surface_plot():
+    # Test 1: Check if the plot is created successfully
+    fig = create_surface_plot()
+    assert fig is not None, "Figure should be created successfully"
+    
+    # Test 2: Check if the plot is a 3D surface plot
+    ax = fig.get_axes()[0]
+    assert ax.name == '3d', "Plot should be a 3D plot"
+    assert len(ax.get_children()) > 0, "Surface plot should have at least one surface"
+    
+    # Test 3: Check if the data range and step size are correct
+    x = np.arange(-20, 20 + 0.05, 0.05)
+    y = np.arange(-20, 20 + 0.05, 0.05)
+    assert len(x) == 801, "x should have 801 points with step size 0.05"
+    assert len(y) == 801, "y should have 801 points with step size 0.05"
+    
+    # Test 4: Check if axes labels and title are set correctly
+    assert ax.get_xlabel() == 'x', "X-axis label should be 'x'"
+    assert ax.get_ylabel() == 'y', "Y-axis label should be 'y'"
+    assert ax.get_zlabel() == 'z', "Z-axis label should be 'z'"
+    assert ax.get_title() == 'Surface Plot of z = exp(-0.01*x^2 - 0.01*y^2)', "Title should be 'Surface Plot of z = exp(-0.01*x^2 - 0.01*y^2)'"
+    
+    # Clean up
+    plt.close(fig)
+
+# Q5: Create an animated plot for the given function
 
 
 
