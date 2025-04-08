@@ -8,7 +8,7 @@ For this project, you are provided with the `mathematics.csv` file containing a 
 
 ### Instructions:
 
-1. **Scatter Plot**: **(20%)**  
+1. **Scatter Plot**: **(20%)**  (Use mathematics.csv for this question)
    - Create a scatter plot to visualize the relationship between `x` and `y`, where `y = x^2`.
    - Ensure that the axes are labeled and the plot has an appropriate title.
 
