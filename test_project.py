@@ -2,9 +2,10 @@ import unittest
 import pandas as pd
 import matplotlib.pyplot as plt
 from scatter_plot import create_scatter_plot
+from logarithmic_regression import fit_logarithmic_regression
 import os
 
-# Q1
+# Q1: Create a scatter plot of y = x^2 using data from a CSV file 
 
 # Create a test CSV file before running tests
 def setup_test_csv():
@@ -47,6 +48,51 @@ def test_create_scatter_plot():
     # Clean up
     plt.close(fig)
     os.remove('test_mathematics.csv')
+
+# Q2: Logarithmic Regression - Fit a logarithmic regression model to noisy data and plot the result.
+    # Function to set up the test data file
+def setup_test_data():
+    data = pd.DataFrame({
+        'x': [1, 2, 3, 4, 5],
+        'y': [0.2, 1.1, 1.5, 1.8, 2.0]  # Noisy logarithmic data
+    })
+    data.to_csv('test_noisy_data.txt', index=False)
+
+# Test case for fit_logarithmic_regression() function
+def test_fit_logarithmic_regression():
+    # Setup the test data file
+    setup_test_data()
+    
+    # Test 1: Check if the data file is read correctly
+    data = pd.read_csv('test_noisy_data.txt')
+    assert len(data) == 5, "Data file should have 5 rows"
+    assert list(data.columns) == ['x', 'y'], "Data file should have 'x' and 'y' columns"
+    assert (data['x'] == [1, 2, 3, 4, 5]).all(), "x values should match expected values"
+    
+    # Test 2: Check if logarithmic regression is fitted correctly
+    fig, (a, b) = fit_logarithmic_regression('test_noisy_data.txt')
+    expected_a = 0.0  # Approximate expected value based on data
+    expected_b = 1.0  # Approximate expected value based on data
+    assert abs(a - expected_a) < 1.0, f"Expected a ≈ {expected_a}, but got {a}"
+    assert abs(b - expected_b) < 1.0, f"Expected b ≈ {expected_b}, but got {b}"
+    # Test 3: Check if scatter plot and best-fit curve are plotted
+    ax = fig.get_axes()[0]
+    assert len(ax.collections) == 1, "Scatter plot should have one set of points"
+    scatter_data = ax.collections[0].get_offsets().data
+    expected_data = pd.read_csv('test_noisy_data.txt')[['x', 'y']].values
+    assert (scatter_data == expected_data).all(), "Scatter plot data should match CSV data"
+    assert len(ax.lines) == 1, "Best-fit curve should be plotted"
+    
+    # Test 4: Check if axes labels and title are set correctly
+    assert ax.get_xlabel() == 'x', "X-axis label should be 'x'"
+    assert ax.get_ylabel() == 'y', "Y-axis label should be 'y'"
+    assert ax.get_title() == 'Logarithmic Regression: y = a + b*ln(x)', "Title should be 'Logarithmic Regression: y = a + b*ln(x)'"
+    assert len(ax.get_legend().get_texts()) == 2, "Legend should have two entries"
+    
+    # Clean up
+    plt.close(fig)
+    os.remove('test_noisy_data.txt')
+    
 
 if __name__ == '__main__':
     unittest.main()
