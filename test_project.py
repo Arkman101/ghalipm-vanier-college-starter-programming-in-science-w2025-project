@@ -2,8 +2,10 @@ import unittest
 import pandas as pd
 import matplotlib.pyplot as plt
 from scatter_plot import create_scatter_plot
+from square_root_regression import fit_square_root_regression
 from logarithmic_regression import fit_logarithmic_regression
 from surface_plot import create_surface_plot
+import numpy as np
 import os
 
 # Q1: Create a scatter plot of y = x^2 using data from a CSV file 
