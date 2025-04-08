@@ -93,6 +93,54 @@ def test_fit_logarithmic_regression():
     plt.close(fig)
     os.remove('test_noisy_data.txt')
     
+# Q3: Fit a square root regression model to data and plot the result.
+    # Function to set up the test data file
+
+def setup_test_data():
+    data = pd.DataFrame({
+        'x': [0, 1, 4, 9, 16],
+        'y': [0.1, 1.2, 2.1, 3.0, 4.2]  # Noisy square root data
+    })
+    data.to_csv('test_data.txt', index=False)
+
+# Test case for fit_square_root_regression() function
+def test_fit_square_root_regression():
+    # Setup the test data file
+    setup_test_data()
+    
+    # Test 1: Check if the data file is read correctly
+    data = pd.read_csv('test_data.txt')
+    assert len(data) == 5, "Data file should have 5 rows"
+    assert list(data.columns) == ['x', 'y'], "Data file should have 'x' and 'y' columns"
+    assert (data['x'] == [0, 1, 4, 9, 16]).all(), "x values should match expected values"
+    
+    # Test 2: Check if square root regression is fitted correctly
+    fig, (a, b) = fit_square_root_regression('test_data.txt')
+    expected_a = 0.0  # Approximate expected value
+    expected_b = 1.0  # Approximate expected value
+    assert abs(a - expected_a) < 1.0, f"Expected a ≈ {expected_a}, but got {a}"
+    assert abs(b - expected_b) < 1.0, f"Expected b ≈ {expected_b}, but got {b}"
+    
+    # Test 3: Check if scatter plot and best-fit curve are plotted
+    ax = fig.get_axes()[0]
+    assert len(ax.collections) == 1, "Scatter plot should have one set of points"
+    scatter_data = ax.collections[0].get_offsets().data
+    expected_data = pd.read_csv('test_data.txt')[['x', 'y']].values
+    assert (scatter_data == expected_data).all(), "Scatter plot data should match CSV data"
+    assert len(ax.lines) == 1, "Best-fit curve should be plotted"
+    
+    # Test 4: Check if axes labels and title are set correctly
+    assert ax.get_xlabel() == 'x', "X-axis label should be 'x'"
+    assert ax.get_ylabel() == 'y', "Y-axis label should be 'y'"
+    assert ax.get_title() == 'Square Root Regression: y = a + b*sqrt(x)', "Title should be 'Square Root Regression: y = a + b*sqrt(x)'"
+    assert len(ax.get_legend().get_texts()) == 2, "Legend should have two entries"
+    
+    # Clean up
+    plt.close(fig)
+    os.remove('test_data.txt')
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
