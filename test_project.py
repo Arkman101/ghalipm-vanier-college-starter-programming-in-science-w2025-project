@@ -5,6 +5,9 @@ from scatter_plot import create_scatter_plot
 from square_root_regression import fit_square_root_regression
 from logarithmic_regression import fit_logarithmic_regression
 from surface_plot import create_surface_plot
+from animated_plot import create_animated_plot
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
 import numpy as np
 import os
 
@@ -172,7 +175,32 @@ def test_create_surface_plot():
 
 # Q5: Create an animated plot for the given function
 
-
+# Test case for create_animated_plot() function
+def test_create_animated_plot():
+    # Test 1: Check if the animation is created successfully
+    ani = create_animated_plot()
+    assert ani is not None, "Animation should be created successfully"
+    
+    # Test 2: Check if the data range and step size are correct
+    x = np.arange(-4, 4 + 0.01, 0.01)
+    assert len(x) == 801, "x should have 801 points with step size 0.01"
+    y = 4 * np.cos(2 * x)
+    assert len(y) == 801, "y should have 801 points"
+    assert abs(y[0] - 4 * np.cos(2 * -4)) < 1e-6, "y[0] should match 4*cos(2*-4)"
+    
+    # Test 3: Check if the plot has correct labels and title
+    fig = ani._fig
+    ax = fig.get_axes()[0]
+    assert ax.get_xlabel() == 'x', "X-axis label should be 'x'"
+    assert ax.get_ylabel() == 'y', "Y-axis label should be 'y'"
+    assert ax.get_title() == 'Animated Plot of y = 4*cos(2*x)', "Title should be 'Animated Plot of y = 4*cos(2*x)'"
+    
+    # Test 4: Check if the animation has the correct number of frames
+    assert ani.frame_seq.__len__() == 801, "Animation should have 801 frames"
+    
+    # Clean up
+    plt.close(fig)
+    
 
 if __name__ == '__main__':
     unittest.main()
