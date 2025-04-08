@@ -12,7 +12,7 @@ For this project, you are provided with the `mathematics.csv` file containing a 
    - Create a scatter plot to visualize the relationship between `x` and `y`, where `y = x^2`.
    - Ensure that the axes are labeled and the plot has an appropriate title.
 
-2. **Logarithmic Regression**: **(20%)**  (Use logarithm_noisy.csv for the question)
+2. **Logarithmic Regression**: **(20%)**  (Use noisy_data.txt for the question)
    - Use a logarithmic regression model to fit the noisy logarithmic data.
    - Plot the best-fit logarithmic curve on the scatter plot.
    - Ensure proper axis labeling and titling.
