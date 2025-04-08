@@ -23,7 +23,8 @@ For this project, you are provided with the `mathematics.csv` file containing a 
    - Ensure the plot clearly shows both the data points and the regression line.
 
 4. **Surface Plot** : **(20%)**  
-   - Create a **3D plot** for the function `z=exp(-0.01*x**2-0.01*y**2)` for `x` and `y` both in (-20, 20) with step length h=0.05 . 
+   - Create a **3D plot** for the function `z=exp(-0.01*x**2-0.01*y**2)` for `x` and `y` both in (-20, 20) with step length h=0.05.
+   - Ensure proper axis labeling and titling.
 
 5. **Animation**: **(20%)**  
    - Create an animated plot for `y = 4*cos(2*x)`, for `x` in (-4,4) with step length h=0.01 where the plot progressively adds data points to simulate the evolution of the graph over time.
