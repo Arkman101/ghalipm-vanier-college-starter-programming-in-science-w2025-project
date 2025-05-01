@@ -17,7 +17,7 @@ For this project, you are provided with the `mathematics.csv` file containing a 
    - Plot the best-fit logarithmic curve on the scatter plot.
    - Ensure proper axis labeling and titling.
 
-3. **Square Root Regression**: **(20%)**  
+3. **Square Root Regression**: **(20%)**  (Use sqrt_data.csv for the question)
    - Fit a square root regression model to the data.
    - Plot the best-fit square root curve.
    - Ensure the plot clearly shows both the data points and the regression line.
