@@ -13,11 +13,20 @@ import os
 
 # Q1: Create a scatter plot of y = x^2 using data from a CSV file
 
-def create_scatter_plot(csv_file='mathematics.csv'):
-    # Do your coding here
-    return fig
+file_path = ('mathematics.csv')
+df = pd.read_csv(file_path)
+df.head()
+x = df['x']
+y = df['y (y = x^2)']
 
-
+plt.figure(figsize=(8, 6))
+plt.scatter(x, y, color='blue', alpha=0.6)
+plt.title('Scatter Plot of y = x²')
+plt.xlabel('x')
+plt.ylabel('y = x²')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
 # Q2: Logarithmic Regression - Fit a logarithmic regression model to noisy data and plot the result.
 
 def fit_logarithmic_regression(data_file='noisy_data.txt'):
